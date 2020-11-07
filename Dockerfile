@@ -7,6 +7,10 @@ RUN apt-get upgrade -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 
+# Install tzdata, noninteractive, otherwise the build stalls expecting input for TZ
+ENV TZ="America/Edmonton"
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
 # install ffmpeg
 RUN apt-get install -y ffmpeg
 
