@@ -29,5 +29,6 @@ RUN chmod +rxxx /opt/mp4converter
 
 # Set default docker variables
 ENV TIME_ZONE=${TIME_ZONE:-America/Edmonton}
+ENV FILE_CHECK=${DNS_CHECK:-900}
 
-CMD /opt/mp4converter
+CMD /opt/mp4converter ${TIME_ZONE} ${FILE_CHECK}
