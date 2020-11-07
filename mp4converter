@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Set incoming parameters to named variables
+timezone=${1}
+filecheck=${2}
+
+
+logdest="/tmp/mp4automator-log"
+# Add PUID and PGID later if needed (input parameter 6 and 7 below)
+#touch ${logdest} && chown ${6}:${7} ${logdest}
+
+
+echo -e "[$(TZ=${timezone} date +%D" "%H:%M" "%Z)] Monitoring for files to convert, checks every ${filecheck} seconds\nCurrent "
+
+while :;do
+  sleep ${filecheck}
+  /app/manual.py -i /data/ -a
+  echo -e "[$(TZ=${timezone} date +%D" "%H:%M" "%Z)] processed the loop "
+done
