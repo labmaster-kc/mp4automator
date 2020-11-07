@@ -1,7 +1,7 @@
 # Use ubuntu 20.04 image
 FROM ubuntu:20.04
 
-# Install Python
+# Install Python and pip
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y python3
@@ -9,7 +9,7 @@ RUN apt-get install -y python3-pip
 
 # Install tzdata, noninteractive, otherwise the build stalls expecting input for TZ
 ENV TZ="America/Edmonton"
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+RUN DEBIAN_FRONTEND="noninteractive" TZ="America/Edmonton" apt-get -y install tzdata
 
 # install ffmpeg
 RUN apt-get install -y ffmpeg
