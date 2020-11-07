@@ -5,6 +5,7 @@ FROM ubuntu:20.04
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
 
 # install ffmpeg
 RUN apt-get install -y ffmpeg
@@ -15,19 +16,7 @@ RUN apt-get install -y git
 RUN git clone https://github.com/mdhiggins/sickbeard_mp4_automator /app
 
 # Install pip modules from sickbeard_mp4_automator
-#RUN pip install --no-cache-dir -r /app/setup/requirements.txt
-#PIP doesn't work in this instance, manually installing the requirements
-RUN apt-get install -y requests
-RUN apt-get install -y requests[security]
-RUN apt-get install -y requests-cache
-RUN apt-get install -y babelfish
-RUN apt-get install -y tmdbsimple
-RUN apt-get install -y mutagen
-RUN apt-get install -y guessit
-RUN apt-get install -y subliminal
-RUN apt-get install -y python-dateutil
-RUN apt-get install -y stevedore
-RUN apt-get install -y qtfaststart
+RUN pip install --no-cache-dir -r /app/setup/requirements.txt
 
 # Set version label
 LABEL build_version="mp4automator, Version: 1.0.00, Build-date: 2020.11.07"
