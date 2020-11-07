@@ -7,7 +7,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y python3
 
 # install ffmpeg
-RUN apt-get install python-pip ffmpeg -y -qq
+RUN apt-get install -y ffmpeg
 
 RUN git clone https://github.com/mdhiggins/sickbeard_mp4_automator /app
 # Install pip modules from sickbeard_mp4_automator
