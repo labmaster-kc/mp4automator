@@ -7,6 +7,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 
+RUN pip --version
+
 # Install tzdata, noninteractive, otherwise the build stalls expecting input for TZ
 ENV TZ="America/Edmonton"
 RUN DEBIAN_FRONTEND="noninteractive" TZ="America/Edmonton" apt-get -y install tzdata
