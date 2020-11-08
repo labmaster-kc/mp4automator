@@ -7,7 +7,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 
-RUN pip --version
+RUN pip3 --version
 
 # Install tzdata, noninteractive, otherwise the build stalls expecting input for TZ
 ENV TZ="America/Edmonton"
@@ -22,7 +22,7 @@ RUN apt-get install -y git
 RUN git clone https://github.com/mdhiggins/sickbeard_mp4_automator /app
 
 # Install pip modules from sickbeard_mp4_automator
-RUN pip install --no-cache-dir -r /app/setup/requirements.txt
+RUN pip3 install --no-cache-dir -r /app/setup/requirements.txt
 
 # Set version label
 LABEL build_version="mp4automator, Version: 1.0.00, Build-date: 2020.11.07"
